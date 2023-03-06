@@ -1,9 +1,11 @@
 const express = require('express')
 const home = require('./routes/home')
+const cors = require('cors')
 const uploadImage = require('./middleware/uploadImage')
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 app.use('/home', home)
 app.post('/img', uploadImage.single('foto'), (req, res) =>{
